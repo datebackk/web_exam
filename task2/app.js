@@ -17,6 +17,8 @@ sequelize.sync({ force: true })
     console.log(`Database & tables created!`);
   });
 
+app.set('view engine', 'ejs');
+
 app.use(bodyParser.json());
 app.use(express.urlencoded({
     extended: true
@@ -25,7 +27,7 @@ app.use(express.static('public'));
 
 
 app.get('/', (req, res) => {
-    res.sendFile('views/index.ejs', {root: __dirname});
+    res.render('index');
 });
 
 app.get('/getOil/:brand', (req, res) => {
